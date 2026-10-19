@@ -1,0 +1,338 @@
+ИСПРАВЛЕННЫЕ ОТВЕТЫ НА ВСЕ 10 ЗАДАНИЙ
+
+Для вопросов 1–6 копируйте целиком соответствующий ответ между разделителями. Для 7–9 вставьте только URL. Для 10 загрузите 10-final-output.jpg из этого комплекта.
+
+========== ВОПРОС 1: Jasmine — текст ==========
+
++ npx jasmine
+Randomized with seed 36013
+Started
+.......
+
+
+7 specs, 0 failures
+Finished in 0.013 seconds
+Randomized with seed 36013 (jasmine --random=true --seed=36013)
+
+
+========== ВОПРОС 2: Dockerfile — вставить код, а не ссылку ==========
+
+FROM nginx
+COPY favicon.ico /usr/share/nginx/html/favicon.ico
+COPY index.html /usr/share/nginx/html/index.html
+COPY script.js /usr/share/nginx/html/script.js
+COPY style.css /usr/share/nginx/html/style.css
+COPY taxCalculator.js /usr/share/nginx/html/taxCalculator.js
+
+
+========== ВОПРОС 3: Полный вывод сборки Docker — текст ==========
+
++ docker build --progress=plain -t tax-calculator:latest .
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 305B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/nginx:latest
+#2 DONE 0.8s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 80B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 10.49kB done
+#4 DONE 0.0s
+
+#5 [1/6] FROM docker.io/library/nginx:latest@sha256:8792d66247249c7efa6b5ba788664dd5cc827073eaea0b1b6eac70846ec6d58e
+#5 resolve docker.io/library/nginx:latest@sha256:8792d66247249c7efa6b5ba788664dd5cc827073eaea0b1b6eac70846ec6d58e 0.0s done
+#5 sha256:8792d66247249c7efa6b5ba788664dd5cc827073eaea0b1b6eac70846ec6d58e 2.29kB / 2.29kB done
+#5 sha256:57df7715e5164e0a18083ed0370e230f9408a90a17143c2bcb75353f5016980a 9.09kB / 9.09kB done
+#5 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 0B / 29.84MB 0.1s
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 0B / 34.00MB 0.1s
+#5 sha256:807ab930f3a0b83345bc42de5ad541c4489d5760c98e81d5ea14dee9d810cfb9 0B / 627B 0.1s
+#5 sha256:807ab930f3a0b83345bc42de5ad541c4489d5760c98e81d5ea14dee9d810cfb9 627B / 627B 0.3s done
+#5 sha256:1efc5319292722aab1db28a5824bcd2e25fee543e04a0ac519d8d1ecf034ff48 0B / 955B 0.5s
+#5 sha256:1efc5319292722aab1db28a5824bcd2e25fee543e04a0ac519d8d1ecf034ff48 955B / 955B 0.7s done
+#5 sha256:947d22046304754dc93b32376e9fd69c91a963bb81fa74d0c4dde2ec15331e00 0B / 404B 0.8s
+#5 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 2.10MB / 29.84MB 0.9s
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 2.10MB / 34.00MB 0.9s
+#5 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 4.19MB / 29.84MB 1.3s
+#5 sha256:947d22046304754dc93b32376e9fd69c91a963bb81fa74d0c4dde2ec15331e00 404B / 404B 1.1s done
+#5 sha256:8020170dc65f2c8d9c6b75501be93be0bb7a93438642c6f362dd7e00fe300277 0B / 1.21kB 1.3s
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 4.19MB / 34.00MB 1.4s
+#5 sha256:8020170dc65f2c8d9c6b75501be93be0bb7a93438642c6f362dd7e00fe300277 1.21kB / 1.21kB 1.4s done
+#5 sha256:f7e1db57b58baaf3027e8c5e764bfcbb385fa02df3f4c0202b1161e88f2c299d 0B / 1.40kB 1.6s
+#5 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 6.29MB / 29.84MB 1.8s
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 6.29MB / 34.00MB 1.8s
+#5 sha256:f7e1db57b58baaf3027e8c5e764bfcbb385fa02df3f4c0202b1161e88f2c299d 1.40kB / 1.40kB 1.7s done
+#5 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 8.39MB / 29.84MB 2.1s
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 8.39MB / 34.00MB 2.1s
+#5 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 10.49MB / 29.84MB 2.5s
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 10.49MB / 34.00MB 2.5s
+#5 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 12.58MB / 29.84MB 2.8s
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 12.58MB / 34.00MB 2.8s
+#5 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 14.68MB / 29.84MB 3.2s
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 14.68MB / 34.00MB 3.2s
+#5 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 16.78MB / 29.84MB 3.5s
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 17.83MB / 34.00MB 3.7s
+#5 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 18.87MB / 29.84MB 3.9s
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 19.92MB / 34.00MB 4.0s
+#5 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 20.97MB / 29.84MB 4.2s
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 22.02MB / 34.00MB 4.4s
+#5 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 23.07MB / 29.84MB 4.5s
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 24.12MB / 34.00MB 4.7s
+#5 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 25.17MB / 29.84MB 4.9s
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 26.21MB / 34.00MB 5.0s
+#5 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 27.26MB / 29.84MB 5.1s
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 28.31MB / 34.00MB 5.3s
+#5 sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 29.84MB / 29.84MB 5.5s done
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 30.41MB / 34.00MB 5.6s
+#5 extracting sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 0.1s
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 32.51MB / 34.00MB 6.0s
+#5 sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 34.00MB / 34.00MB 6.2s done
+#5 extracting sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e 1.8s done
+#5 extracting sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee
+#5 extracting sha256:04bdbc7ea6b56fa548bcbfdb3efbb8a892fc38f207ed2d271eab06803ef08fee 1.1s done
+#5 extracting sha256:807ab930f3a0b83345bc42de5ad541c4489d5760c98e81d5ea14dee9d810cfb9
+#5 extracting sha256:807ab930f3a0b83345bc42de5ad541c4489d5760c98e81d5ea14dee9d810cfb9 done
+#5 extracting sha256:1efc5319292722aab1db28a5824bcd2e25fee543e04a0ac519d8d1ecf034ff48 done
+#5 extracting sha256:947d22046304754dc93b32376e9fd69c91a963bb81fa74d0c4dde2ec15331e00 done
+#5 extracting sha256:8020170dc65f2c8d9c6b75501be93be0bb7a93438642c6f362dd7e00fe300277 done
+#5 extracting sha256:f7e1db57b58baaf3027e8c5e764bfcbb385fa02df3f4c0202b1161e88f2c299d
+#5 extracting sha256:f7e1db57b58baaf3027e8c5e764bfcbb385fa02df3f4c0202b1161e88f2c299d done
+#5 DONE 9.0s
+
+#6 [2/6] COPY favicon.ico /usr/share/nginx/html/favicon.ico
+#6 DONE 2.8s
+
+#7 [3/6] COPY index.html /usr/share/nginx/html/index.html
+#7 DONE 0.0s
+
+#8 [4/6] COPY script.js /usr/share/nginx/html/script.js
+#8 DONE 0.0s
+
+#9 [5/6] COPY style.css /usr/share/nginx/html/style.css
+#9 DONE 0.0s
+
+#10 [6/6] COPY taxCalculator.js /usr/share/nginx/html/taxCalculator.js
+#10 DONE 0.0s
+
+#11 exporting to image
+#11 exporting layers 0.1s done
+#11 writing image sha256:d193ce70d940df095d84b4f1d56a81f0ed3854cf73f00748090c06079055ecde done
+#11 naming to docker.io/library/tax-calculator:latest done
+#11 DONE 0.1s
+
+Script started on 2026-10-19 14:53:13-04:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="115" LINES="12"]
+
+
+[+] Building 0.0s (0/1)                                                                             docker:default
+
+[+] Building 0.2s (1/2)                                                                             docker:default
+
+ => [internal] load build definition from Dockerfile                                                          0.0s
+
+ => => transferring dockerfile: 305B                                                                          0.0s
+
+ => [internal] load metadata for docker.io/library/nginx:latest                                               0.2s
+
+[+] Building 0.3s (2/2)                                                                             docker:default
+
+ => [internal] load build definition from Dockerfile                                                          0.0s
+
+ => => transferring dockerfile: 305B                                                                          0.0s
+
+ => [internal] load metadata for docker.io/library/nginx:latest                                               0.3s
+
+[+] Building 0.4s (11/11) FINISHED                                                                  docker:default
+
+ => [internal] load build definition from Dockerfile                                                          0.0s
+
+ => => transferring dockerfile: 305B                                                                          0.0s
+
+ => [internal] load metadata for docker.io/library/nginx:latest                                               0.3s
+
+ => [internal] load .dockerignore                                                                             0.0s
+
+ => => transferring context: 80B                                                                              0.0s
+
+ => [internal] load build context                                                                             0.0s
+
+ => => transferring context: 157B                                                                             0.0s
+
+ => [1/6] FROM docker.io/library/nginx:latest@sha256:8792d66247249c7efa6b5ba788664dd5cc827073eaea0b1b6eac708  0.0s
+
+ => CACHED [2/6] COPY favicon.ico /usr/share/nginx/html/favicon.ico                                           0.0s
+
+ => CACHED [3/6] COPY index.html /usr/share/nginx/html/index.html                                             0.0s
+
+ => CACHED [4/6] COPY script.js /usr/share/nginx/html/script.js                                               0.0s
+
+ => CACHED [5/6] COPY style.css /usr/share/nginx/html/style.css                                               0.0s
+
+ => CACHED [6/6] COPY taxCalculator.js /usr/share/nginx/html/taxCalculator.js                                 0.0s
+
+ => exporting to image                                                                                        0.0s
+
+ => => exporting layers                                                                                       0.0s
+
+ => => writing image sha256:d193ce70d940df095d84b4f1d56a81f0ed3854cf73f00748090c06079055ecde                  0.0s
+
+ => => naming to docker.io/library/tax-calculator:latest                                                      0.0s
+
+
+Script done on 2026-10-19 14:53:14-04:00 [COMMAND_EXIT_CODE="0"]
+
+
+========== ВОПРОС 4: Полный docker ps и проверка HTTP — текст ==========
+
++ docker run -d --name tax-calculator-course -p 8080:80 tax-calculator:latest
+7ed7d181d7517cf1acb123e4147146dca7ac6fa9602b91e9bf4c6a9e91df924f
++ docker ps --filter name=tax-calculator-course
+CONTAINER ID   IMAGE                   COMMAND                  CREATED                  STATUS                  PORTS                                     NAMES
+7ed7d181d751   tax-calculator:latest   "/docker-entrypoint.…"   Less than a second ago   Up Less than a second   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   tax-calculator-course
++ curl -fsS -o /dev/null -w 'HTTP %{http_code}\n' http://127.0.0.1:8080/
+HTTP 200
+
+
+========== ВОПРОС 5: Тегирование и отправка — текст ==========
+
++ ibmcloud cr login
+Logging 'docker' in to 'us.icr.io'...
+Logged in to 'us.icr.io'.
+
+OK
++ docker tag tax-calculator:latest us.icr.io/sn-labs-sabyraslan20/tax-calculator:course-a47946e
++ docker push us.icr.io/sn-labs-sabyraslan20/tax-calculator:course-a47946e
+The push refers to repository [us.icr.io/sn-labs-sabyraslan20/tax-calculator]
+74eb2abd73a8: Preparing
+511345b936d1: Preparing
+fd248ad524bb: Preparing
+34f95d56965b: Preparing
+ef3059b69533: Preparing
+1f6769d33b2c: Preparing
+268dcb7d3ded: Preparing
+3ed70aff1d48: Preparing
+b4ae38225777: Preparing
+dd5ee23ab910: Preparing
+1f5a1d1be68f: Preparing
+15f1c8eb1ab1: Preparing
+1f6769d33b2c: Waiting
+268dcb7d3ded: Waiting
+3ed70aff1d48: Waiting
+b4ae38225777: Waiting
+dd5ee23ab910: Waiting
+1f5a1d1be68f: Waiting
+15f1c8eb1ab1: Waiting
+34f95d56965b: Pushed
+74eb2abd73a8: Pushed
+511345b936d1: Pushed
+fd248ad524bb: Pushed
+ef3059b69533: Pushed
+268dcb7d3ded: Pushed
+1f6769d33b2c: Pushed
+3ed70aff1d48: Pushed
+b4ae38225777: Pushed
+dd5ee23ab910: Pushed
+15f1c8eb1ab1: Pushed
+1f5a1d1be68f: Pushed
+course-a47946e: digest: sha256:0323c9679f6425632d19bb7d89cbd8fc5acf472c27823ba41caa2d5c82fc002f size: 2816
+
+
+========== ВОПРОС 6: Полный вывод развёртывания и application get — текст ==========
+
++ ibmcloud ce application update --name tax-calculator --image us.icr.io/sn-labs-sabyraslan20/tax-calculator:course-a47946e --registry-secret icr-secret --port 80
+Updating application 'tax-calculator' to latest revision.
+The Configuration is still working to reflect the latest desired specification.
+Traffic is not yet migrated to the latest revision.
+Ingress has not yet been reconciled.
+Waiting for load balancer to be ready.
+Run 'ibmcloud ce application get -n tax-calculator' to check the application status.
+OK
+
+https://tax-calculator.2g4jzy6r91sb.us-south.codeengine.appdomain.cloud
++ ibmcloud ce application get --name tax-calculator
+OK
+
+Name:               tax-calculator  
+ID:                 0137674d-c24d-4d06-8c8e-f523a6fa826a  
+Project Name:       Code Engine - sn-labs-sabyraslan20  
+Project ID:         be29dbab-1070-4afd-93e3-a01e4ead7a95  
+Age:                61m  
+Created:            2026-10-19T13:55:10-04:00  
+URL:                https://tax-calculator.2g4jzy6r91sb.us-south.codeengine.appdomain.cloud  
+Cluster Local URL:  http://tax-calculator.2g4jzy6r91sb.svc.cluster.local  
+Console URL:        https://cloud.ibm.com/codeengine/project/us-south/be29dbab-1070-4afd-93e3-a01e4ead7a95/application/tax-calculator/configuration  
+Status Summary:     Application deployed successfully  
+
+Environment Variables:    
+  Type     Name             Value  
+  Literal  CE_API_BASE_URL  https://api.private.us-south.codeengine.cloud.ibm.com  
+  Literal  CE_APP           tax-calculator  
+  Literal  CE_DOMAIN        us-south.codeengine.appdomain.cloud  
+  Literal  CE_PROJECT_ID    be29dbab-1070-4afd-93e3-a01e4ead7a95  
+  Literal  CE_REGION        us-south  
+  Literal  CE_SUBDOMAIN     2g4jzy6r91sb  
+Image:                  us.icr.io/sn-labs-sabyraslan20/tax-calculator:course-a47946e  
+Resource Allocation:      
+  CPU:                0.25  
+  Ephemeral Storage:  400M  
+  Memory:             500M  
+Registry Secrets:         
+  icr-secret  
+Port:                   80  
+
+Revisions:          
+  tax-calculator-00002:    
+    Age:                26s  
+    Latest:             true  
+    Traffic:            100%  
+    Image:              us.icr.io/sn-labs-sabyraslan20/tax-calculator:course-a47946e (pinned to 0323c9)  
+    Running Instances:  1  
+
+Runtime:            
+  Concurrency:       100  
+  Maximum Scale:     1  
+  Minimum Scale:     0  
+  Scale Down Delay:  0  
+  Timeout:           300  
+  Trusted profiles:  disabled  
+
+Readiness Probe:    
+  Type:  tcp  
+  Port:  0 (use listening port)  
+
+Conditions:         
+  Type                 OK    Age  Reason  
+  ConfigurationsReady  true  18s    
+  Ready                true  1s     
+  RoutesReady          true  1s     
+
+Instances:          
+  Name                                              Revision              Running  Status   Restarts  Age  
+  tax-calculator-00002-deployment-794b99c5f7-8dz4n  tax-calculator-00002  3/3      Running  0         26s  
+
+For troubleshooting information visit: https://cloud.ibm.com/docs/codeengine?topic=codeengine-troubleshoot-apps.
+Run 'ibmcloud ce application events -n tax-calculator' to get the system events of the application instances.
+Run 'ibmcloud ce application logs -f -n tax-calculator' to follow the logs of the application instances.
+
+
+========== ВОПРОС 7: URL ==========
+
+https://github.com/asikxz008/juphc-tc_pipeline/blob/main/.tekton/tasks.yaml
+
+========== ВОПРОС 8: URL ==========
+
+https://github.com/asikxz008/juphc-tc_pipeline/blob/main/.tekton/pipeline.yaml
+
+========== ВОПРОС 9: URL ==========
+
+https://github.com/asikxz008/juphc-tc_pipeline/blob/main/.tekton/run.yaml
+
+========== ВОПРОС 10: ЗАГРУЗИТЬ ФАЙЛ ==========
+
+10-final-output.jpg
+
+Приложение из образа Tekton: https://tax-calculator-pipeline.2g4jzy6r91sb.us-south.codeengine.appdomain.cloud
