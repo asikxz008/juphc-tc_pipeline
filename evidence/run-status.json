@@ -1,0 +1,270 @@
+{
+    "apiVersion": "tekton.dev/v1",
+    "kind": "PipelineRun",
+    "metadata": {
+        "annotations": {
+            "chains.tekton.dev/signed": "true"
+        },
+        "creationTimestamp": "2026-10-19T18:55:21Z",
+        "finalizers": [
+            "chains.tekton.dev/pipelinerun"
+        ],
+        "generateName": "juphc-tc-pipeline-",
+        "generation": 1,
+        "labels": {
+            "tekton.dev/pipeline": "juphc-tc-pipeline"
+        },
+        "name": "juphc-tc-pipeline-pbqjl",
+        "namespace": "sn-labs-sabyraslan20",
+        "resourceVersion": "3091232173",
+        "uid": "1b290774-b23b-4043-a67a-71e5f7a55621"
+    },
+    "spec": {
+        "params": [
+            {
+                "name": "repo-url",
+                "value": "https://github.com/asikxz008/juphc-tc_pipeline.git"
+            },
+            {
+                "name": "revision",
+                "value": "a47946e966758e84caeb30d80a28d47fbc23e251"
+            }
+        ],
+        "pipelineRef": {
+            "name": "juphc-tc-pipeline"
+        },
+        "taskRunTemplate": {
+            "serviceAccountName": "pipeline"
+        },
+        "timeouts": {
+            "pipeline": "30m0s"
+        },
+        "workspaces": [
+            {
+                "name": "source",
+                "volumeClaimTemplate": {
+                    "metadata": {
+                        "creationTimestamp": null
+                    },
+                    "spec": {
+                        "accessModes": [
+                            "ReadWriteOnce"
+                        ],
+                        "resources": {
+                            "requests": {
+                                "storage": "1Gi"
+                            }
+                        },
+                        "storageClassName": "skills-network-learner"
+                    },
+                    "status": {}
+                }
+            },
+            {
+                "name": "registry-auth",
+                "secret": {
+                    "secretName": "docker-reg-creds"
+                }
+            }
+        ]
+    },
+    "status": {
+        "childReferences": [
+            {
+                "apiVersion": "tekton.dev/v1",
+                "kind": "TaskRun",
+                "name": "juphc-tc-pipeline-pbqjl-clone",
+                "pipelineTaskName": "clone"
+            },
+            {
+                "apiVersion": "tekton.dev/v1",
+                "kind": "TaskRun",
+                "name": "juphc-tc-pipeline-pbqjl-npminstall",
+                "pipelineTaskName": "npminstall"
+            },
+            {
+                "apiVersion": "tekton.dev/v1",
+                "kind": "TaskRun",
+                "name": "juphc-tc-pipeline-pbqjl-tests",
+                "pipelineTaskName": "tests"
+            },
+            {
+                "apiVersion": "tekton.dev/v1",
+                "kind": "TaskRun",
+                "name": "juphc-tc-pipeline-pbqjl-build",
+                "pipelineTaskName": "build"
+            }
+        ],
+        "completionTime": "2026-10-19T18:58:01Z",
+        "conditions": [
+            {
+                "lastTransitionTime": "2026-10-19T18:58:01Z",
+                "message": "Tasks Completed: 4 (Failed: 0, Cancelled 0), Skipped: 0",
+                "reason": "Succeeded",
+                "status": "True",
+                "type": "Succeeded"
+            }
+        ],
+        "pipelineSpec": {
+            "params": [
+                {
+                    "default": "https://github.com/asikxz008/juphc-tc_pipeline.git",
+                    "name": "repo-url",
+                    "type": "string"
+                },
+                {
+                    "default": "main",
+                    "name": "revision",
+                    "type": "string"
+                }
+            ],
+            "results": [
+                {
+                    "description": "",
+                    "name": "commit",
+                    "value": "$(tasks.clone.results.commit)"
+                },
+                {
+                    "description": "",
+                    "name": "image-url",
+                    "value": "$(tasks.build.results.IMAGE_URL)"
+                },
+                {
+                    "description": "",
+                    "name": "image-digest",
+                    "value": "$(tasks.build.results.IMAGE_DIGEST)"
+                }
+            ],
+            "tasks": [
+                {
+                    "name": "clone",
+                    "params": [
+                        {
+                            "name": "url",
+                            "value": "https://github.com/asikxz008/juphc-tc_pipeline.git"
+                        },
+                        {
+                            "name": "revision",
+                            "value": "a47946e966758e84caeb30d80a28d47fbc23e251"
+                        },
+                        {
+                            "name": "subdirectory",
+                            "value": "repo"
+                        },
+                        {
+                            "name": "deleteExisting",
+                            "value": "false"
+                        }
+                    ],
+                    "taskRef": {
+                        "kind": "ClusterTask",
+                        "name": "git-clone"
+                    },
+                    "workspaces": [
+                        {
+                            "name": "output",
+                            "workspace": "source"
+                        }
+                    ]
+                },
+                {
+                    "name": "npminstall",
+                    "runAfter": [
+                        "clone"
+                    ],
+                    "taskRef": {
+                        "kind": "Task",
+                        "name": "npm"
+                    },
+                    "workspaces": [
+                        {
+                            "name": "source",
+                            "workspace": "source"
+                        }
+                    ]
+                },
+                {
+                    "name": "tests",
+                    "runAfter": [
+                        "npminstall"
+                    ],
+                    "taskRef": {
+                        "kind": "Task",
+                        "name": "jasmine"
+                    },
+                    "workspaces": [
+                        {
+                            "name": "source",
+                            "workspace": "source"
+                        }
+                    ]
+                },
+                {
+                    "name": "build",
+                    "params": [
+                        {
+                            "name": "IMAGE",
+                            "value": "us.icr.io/sn-labs-sabyraslan20/tax-calculator:juphc-tc-pipeline-pbqjl"
+                        },
+                        {
+                            "name": "CONTEXT",
+                            "value": "repo"
+                        },
+                        {
+                            "name": "DOCKERFILE",
+                            "value": "repo/Dockerfile"
+                        },
+                        {
+                            "name": "FORMAT",
+                            "value": "docker"
+                        },
+                        {
+                            "name": "BUILD_EXTRA_ARGS",
+                            "value": "--isolation=chroot"
+                        }
+                    ],
+                    "runAfter": [
+                        "tests"
+                    ],
+                    "taskRef": {
+                        "kind": "ClusterTask",
+                        "name": "buildah"
+                    },
+                    "workspaces": [
+                        {
+                            "name": "source",
+                            "workspace": "source"
+                        },
+                        {
+                            "name": "dockerconfig",
+                            "workspace": "registry-auth"
+                        }
+                    ]
+                }
+            ],
+            "workspaces": [
+                {
+                    "name": "source"
+                },
+                {
+                    "name": "registry-auth"
+                }
+            ]
+        },
+        "results": [
+            {
+                "name": "commit",
+                "value": "a47946e966758e84caeb30d80a28d47fbc23e251"
+            },
+            {
+                "name": "image-url",
+                "value": "us.icr.io/sn-labs-sabyraslan20/tax-calculator:juphc-tc-pipeline-pbqjl"
+            },
+            {
+                "name": "image-digest",
+                "value": "sha256:ad08c0371c2860d1d631b09e88f8aced5067aee1a41467df6919bebaf99d3151"
+            }
+        ],
+        "startTime": "2026-10-19T18:55:21Z"
+    }
+}

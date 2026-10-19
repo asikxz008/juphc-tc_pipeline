@@ -1,0 +1,7 @@
++ docker run -d --name tax-calculator-course -p 8080:80 tax-calculator:latest
+7ed7d181d7517cf1acb123e4147146dca7ac6fa9602b91e9bf4c6a9e91df924f
++ docker ps --filter name=tax-calculator-course
+CONTAINER ID   IMAGE                   COMMAND                  CREATED                  STATUS                  PORTS                                     NAMES
+7ed7d181d751   tax-calculator:latest   "/docker-entrypoint.…"   Less than a second ago   Up Less than a second   0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   tax-calculator-course
++ curl -fsS -o /dev/null -w 'HTTP %{http_code}\n' http://127.0.0.1:8080/
+HTTP 200

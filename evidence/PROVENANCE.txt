@@ -1,0 +1,21 @@
+Course assessment correction: nginx static application and exact repository name.
+Repository: https://github.com/asikxz008/juphc-tc_pipeline
+Manual Docker build/run occurred in the actual course-provided Cloud IDE.
+The build log includes the full plain build plus an ANSI-stripped actual tty build recording; the raw tty recording is retained alongside it. No success output was invented.
+Dockerfile: FROM nginx plus five separate COPY instructions.
+Manual image: us.icr.io/sn-labs-sabyraslan20/tax-calculator:course-a47946e
+Manual application: https://tax-calculator.2g4jzy6r91sb.us-south.codeengine.appdomain.cloud
+PipelineRun: juphc-tc-pipeline-pbqjl
+Namespace: sn-labs-sabyraslan20
+Completed (UTC): 2026-10-19T18:58:01Z
+Source commit: a47946e966758e84caeb30d80a28d47fbc23e251
+Status: Tasks Completed: 4 (Failed: 0, Cancelled 0), Skipped: 0
+Pipeline image tag: us.icr.io/sn-labs-sabyraslan20/tax-calculator:juphc-tc-pipeline-pbqjl
+Pipeline image digest: sha256:ad08c0371c2860d1d631b09e88f8aced5067aee1a41467df6919bebaf99d3151
+Deployed reference: us.icr.io/sn-labs-sabyraslan20/tax-calculator@sha256:ad08c0371c2860d1d631b09e88f8aced5067aee1a41467df6919bebaf99d3151
+Pipeline application: https://tax-calculator-pipeline.2g4jzy6r91sb.us-south.codeengine.appdomain.cloud
+The pipeline image was deployed using the Code Engine CLI after the successful Tekton run.
+Both app screenshots were captured from the respective real public Code Engine URLs after checking the nginx version and rendered calculation.
+Browser checks: 85,000 income / 5,000 deductions => 11,000 tax and 74,000 take-home; 150,000 income / zero deductions => 30,000 tax and 120,000 take-home.
+These are temporary educational resources and may expire.
+No credentials or Secret values are included.

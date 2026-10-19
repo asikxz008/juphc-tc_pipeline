@@ -1,0 +1,31 @@
+Script started on 2026-10-19 14:53:13-04:00 [TERM="xterm-256color" TTY="/dev/pts/1" COLUMNS="115" LINES="12"]
+[1A[1B[0G[?25l
+[?25h[1A[0G[?25l[+] Building 0.0s (0/1)                                                                             docker:default
+[?25h[1A[0G[?25l[+] Building 0.2s (1/2)                                                                             docker:default
+[34m => [internal] load build definition from Dockerfile                                                          0.0s
+[0m[34m => => transferring dockerfile: 305B                                                                          0.0s
+[0m => [internal] load metadata for docker.io/library/nginx:latest                                               0.2s
+[?25h[1A[1A[1A[1A[0G[?25l[+] Building 0.3s (2/2)                                                                             docker:default
+[34m => [internal] load build definition from Dockerfile                                                          0.0s
+[0m[34m => => transferring dockerfile: 305B                                                                          0.0s
+[0m[34m => [internal] load metadata for docker.io/library/nginx:latest                                               0.3s
+[0m[?25h[1A[1A[1A[1A[0G[?25l[+] Building 0.4s (11/11) FINISHED                                                                  docker:default
+[34m => [internal] load build definition from Dockerfile                                                          0.0s
+[0m[34m => => transferring dockerfile: 305B                                                                          0.0s
+[0m[34m => [internal] load metadata for docker.io/library/nginx:latest                                               0.3s
+[0m[34m => [internal] load .dockerignore                                                                             0.0s
+[0m[34m => => transferring context: 80B                                                                              0.0s
+[0m[34m => [internal] load build context                                                                             0.0s
+[0m[34m => => transferring context: 157B                                                                             0.0s
+[0m[34m => [1/6] FROM docker.io/library/nginx:latest@sha256:8792d66247249c7efa6b5ba788664dd5cc827073eaea0b1b6eac708  0.0s
+[0m[34m => CACHED [2/6] COPY favicon.ico /usr/share/nginx/html/favicon.ico                                           0.0s
+[0m[34m => CACHED [3/6] COPY index.html /usr/share/nginx/html/index.html                                             0.0s
+[0m[34m => CACHED [4/6] COPY script.js /usr/share/nginx/html/script.js                                               0.0s
+[0m[34m => CACHED [5/6] COPY style.css /usr/share/nginx/html/style.css                                               0.0s
+[0m[34m => CACHED [6/6] COPY taxCalculator.js /usr/share/nginx/html/taxCalculator.js                                 0.0s
+[0m[34m => exporting to image                                                                                        0.0s
+[0m[34m => => exporting layers                                                                                       0.0s
+[0m[34m => => writing image sha256:d193ce70d940df095d84b4f1d56a81f0ed3854cf73f00748090c06079055ecde                  0.0s
+[0m[34m => => naming to docker.io/library/tax-calculator:latest                                                      0.0s
+[0m[?25h
+Script done on 2026-10-19 14:53:14-04:00 [COMMAND_EXIT_CODE="0"]

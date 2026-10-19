@@ -1,0 +1,5 @@
+index.html HTTP 200
+script.js HTTP 200
+style.css HTTP 200
+taxCalculator.js HTTP 200
+favicon.ico HTTP 200

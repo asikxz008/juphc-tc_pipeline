@@ -1,0 +1,48 @@
+[pod/juphc-tc-pipeline-pbqjl-build-pod/place-scripts] 2026/10/19 18:57:06 Decoded script /tekton/scripts/script-0-42f8d
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] STEP 1/6: FROM nginx
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Resolving "nginx" using unqualified-search registries (/etc/containers/registries.conf)
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Trying to pull registry.access.redhat.com/nginx:latest...
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Trying to pull registry.redhat.io/nginx:latest...
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Trying to pull docker.io/library/nginx:latest...
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Getting image source signatures
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:c9ec797c69edb58fa5b0a18196db6cc8641ef04ebab5e27cd79dab1efc70c7b1
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:113d9139ada274048223ea25978cba92fe0909af2f948b774cd1e4920886640e
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:ecc510c1e359bdc007b39802570bb7e4dec7d6ebccf357c3201a74299113e05e
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:188e9077f350f759003baed76d4a431bf5b69670eb15506dd1b9c4662ec6517a
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:b19352c605155b5054de1fa27f7e08bac797b81eb12f3e8fc4d0b733666870c0
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:792a76c59dbdf946e36e340b0796dbba10b08beb71ff211eb9b1e36ea7ff56fa
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:6a6757ab48b1101049bc370d1b338f05a3f7cb46b430cf3e20348408d2e3634e
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying config sha256:ca5e66f340c769281edb187cf330c9246ab0cab9291bd1d6750dd356db26ab45
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Writing manifest to image destination
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] STEP 2/6: COPY favicon.ico /usr/share/nginx/html/favicon.ico
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] STEP 3/6: COPY index.html /usr/share/nginx/html/index.html
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] STEP 4/6: COPY script.js /usr/share/nginx/html/script.js
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] STEP 5/6: COPY style.css /usr/share/nginx/html/style.css
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] STEP 6/6: COPY taxCalculator.js /usr/share/nginx/html/taxCalculator.js
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] COMMIT us.icr.io/sn-labs-sabyraslan20/tax-calculator:juphc-tc-pipeline-pbqjl
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Getting image source signatures
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:15f1c8eb1ab18eae260c7fb6296434cbe1ff0e1e30fd814ae92a80dd54005e62
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:397571c090911d767906912edd5e7a5efc36d9470cbfc758a4abaceb5a712bfb
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:2e3db029b46b91157b8b5584f5042685d18eeeaffa0d1fb4f3a9f1a0be8b9d5b
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:a488eea137de276f0f36132fb570881d0ef204f91622f3e56124a29083ee697a
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:133a2cb760fe7f6facc929e7840d151669a1a1a928218c60abf22716f1a136d1
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:96e522d1d691c64f1078b5aaf73ffe395c151027fc654630aa21a21b4d858a6e
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:23a7206ab964309d4e1fcc838393579239a96b7d3e3f548ece7f61a03b33488d
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:ea69ca28e5c65b81d0d6924687aa463d7ca48c68f1c909363186214fdf2af176
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying config sha256:f1c25f811197a33b1410836615e7a8a4b1df8528f9cec3e2d6d54174983a689c
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Writing manifest to image destination
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] --> f1c25f811197
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Successfully tagged us.icr.io/sn-labs-sabyraslan20/tax-calculator:juphc-tc-pipeline-pbqjl
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] f1c25f811197a33b1410836615e7a8a4b1df8528f9cec3e2d6d54174983a689c
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Getting image source signatures
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:96e522d1d691c64f1078b5aaf73ffe395c151027fc654630aa21a21b4d858a6e
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:397571c090911d767906912edd5e7a5efc36d9470cbfc758a4abaceb5a712bfb
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:133a2cb760fe7f6facc929e7840d151669a1a1a928218c60abf22716f1a136d1
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:2e3db029b46b91157b8b5584f5042685d18eeeaffa0d1fb4f3a9f1a0be8b9d5b
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:a488eea137de276f0f36132fb570881d0ef204f91622f3e56124a29083ee697a
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:15f1c8eb1ab18eae260c7fb6296434cbe1ff0e1e30fd814ae92a80dd54005e62
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:23a7206ab964309d4e1fcc838393579239a96b7d3e3f548ece7f61a03b33488d
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying blob sha256:ea69ca28e5c65b81d0d6924687aa463d7ca48c68f1c909363186214fdf2af176
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Copying config sha256:f1c25f811197a33b1410836615e7a8a4b1df8528f9cec3e2d6d54174983a689c
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] Writing manifest to image destination
+[pod/juphc-tc-pipeline-pbqjl-build-pod/step-build-and-push] sha256:ad08c0371c2860d1d631b09e88f8aced5067aee1a41467df6919bebaf99d3151us.icr.io/sn-labs-sabyraslan20/tax-calculator:juphc-tc-pipeline-pbqjl[pod/juphc-tc-pipeline-pbqjl-build-pod/prepare] 2026/10/19 18:57:06 Entrypoint initialization

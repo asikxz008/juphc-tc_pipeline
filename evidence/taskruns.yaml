@@ -1,0 +1,678 @@
+apiVersion: v1
+items:
+- apiVersion: tekton.dev/v1
+  kind: TaskRun
+  metadata:
+    annotations:
+      chains.tekton.dev/signed: "true"
+      operator.tekton.dev/last-applied-hash: a1c50ace48ee422c588c509ea6997d797dc4c44a21b394d379f4c7f1c73b139d
+      pipeline.tekton.dev/release: b08b965d883495bbc8c943cb49eb97fdea5d5f80
+      tekton.dev/pipelines.minVersion: 0.12.1
+      tekton.dev/tags: image-build
+    creationTimestamp: "2026-10-19T18:57:03Z"
+    finalizers:
+    - chains.tekton.dev
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: tekton-pipelines
+      app.kubernetes.io/version: "0.1"
+      operator.tekton.dev/operand-name: openshift-pipelines-addons
+      operator.tekton.dev/provider-type: redhat
+      tekton.dev/clusterTask: buildah
+      tekton.dev/memberOf: tasks
+      tekton.dev/pipeline: juphc-tc-pipeline
+      tekton.dev/pipelineRun: juphc-tc-pipeline-pbqjl
+      tekton.dev/pipelineTask: build
+    name: juphc-tc-pipeline-pbqjl-build
+    namespace: sn-labs-sabyraslan20
+    ownerReferences:
+    - apiVersion: tekton.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PipelineRun
+      name: juphc-tc-pipeline-pbqjl
+      uid: 1b290774-b23b-4043-a67a-71e5f7a55621
+    resourceVersion: "3091232170"
+    uid: 3f2e7ff4-8050-46fa-a8a3-e1326e1a9827
+  spec:
+    params:
+    - name: IMAGE
+      value: us.icr.io/sn-labs-sabyraslan20/tax-calculator:juphc-tc-pipeline-pbqjl
+    - name: CONTEXT
+      value: repo
+    - name: DOCKERFILE
+      value: repo/Dockerfile
+    - name: FORMAT
+      value: docker
+    - name: BUILD_EXTRA_ARGS
+      value: --isolation=chroot
+    serviceAccountName: pipeline
+    taskRef:
+      kind: ClusterTask
+      name: buildah
+    timeout: 1h0m0s
+    workspaces:
+    - name: source
+      persistentVolumeClaim:
+        claimName: pvc-9fe007cffe
+    - name: dockerconfig
+      secret:
+        secretName: docker-reg-creds
+  status:
+    completionTime: "2026-10-19T18:58:01Z"
+    conditions:
+    - lastTransitionTime: "2026-10-19T18:58:01Z"
+      message: All Steps have completed executing
+      reason: Succeeded
+      status: "True"
+      type: Succeeded
+    podName: juphc-tc-pipeline-pbqjl-build-pod
+    results:
+    - name: IMAGE_DIGEST
+      type: string
+      value: sha256:ad08c0371c2860d1d631b09e88f8aced5067aee1a41467df6919bebaf99d3151
+    - name: IMAGE_URL
+      type: string
+      value: us.icr.io/sn-labs-sabyraslan20/tax-calculator:juphc-tc-pipeline-pbqjl
+    startTime: "2026-10-19T18:57:03Z"
+    steps:
+    - container: step-build-and-push
+      imageID: registry.redhat.io/rhel8/buildah@sha256:9cf08506ffdabb2034332e028f8a23f200cac8dda6233b58d5dfdc5a03cbc322
+      name: build-and-push
+      terminated:
+        containerID: cri-o://1a5b4e27dee655e830b5ce441d85f8a1c3ccdeefcff459bd29e0ee14feac8bdb
+        exitCode: 0
+        finishedAt: "2026-10-19T18:58:00Z"
+        message: '[{"key":"IMAGE_DIGEST","value":"sha256:ad08c0371c2860d1d631b09e88f8aced5067aee1a41467df6919bebaf99d3151","type":1},{"key":"IMAGE_URL","value":"us.icr.io/sn-labs-sabyraslan20/tax-calculator:juphc-tc-pipeline-pbqjl","type":1}]'
+        reason: Completed
+        startedAt: "2026-10-19T18:57:12Z"
+      terminationReason: Completed
+    taskSpec:
+      description: |-
+        Buildah task builds source into a container image and then pushes it to a container registry.
+        Buildah Task builds source into a container image using Project Atomic's Buildah build tool.It uses Buildah's support for building from Dockerfiles, using its buildah bud command.This command executes the directives in the Dockerfile to assemble a container image, then pushes that image to a container registry.
+      params:
+      - description: Reference of the image buildah will produce.
+        name: IMAGE
+        type: string
+      - default: registry.redhat.io/rhel8/buildah@sha256:aac6629389db17e99894c5bee0da01d4c8065d11d8c6f6e1602f9484290baa70
+        description: The location of the buildah builder image.
+        name: BUILDER_IMAGE
+        type: string
+      - default: vfs
+        description: Set buildah storage driver
+        name: STORAGE_DRIVER
+        type: string
+      - default: ./Dockerfile
+        description: Path to the Dockerfile to build.
+        name: DOCKERFILE
+        type: string
+      - default: .
+        description: Path to the directory to use as context.
+        name: CONTEXT
+        type: string
+      - default: "true"
+        description: Verify the TLS on the registry endpoint (for push/pull to a non-TLS
+          registry)
+        name: TLSVERIFY
+        type: string
+      - default: oci
+        description: The format of the built container, oci or docker
+        name: FORMAT
+        type: string
+      - default: ""
+        description: Extra parameters passed for the build command when building images.
+        name: BUILD_EXTRA_ARGS
+        type: string
+      - default: ""
+        description: Extra parameters passed for the push command when pushing images.
+        name: PUSH_EXTRA_ARGS
+        type: string
+      - default: "false"
+        description: Skip pushing the built image
+        name: SKIP_PUSH
+        type: string
+      results:
+      - description: Digest of the image just built.
+        name: IMAGE_DIGEST
+        type: string
+      - description: Image repository where the built image would be pushed to
+        name: IMAGE_URL
+        type: string
+      steps:
+      - computeResources: {}
+        image: registry.redhat.io/rhel8/buildah@sha256:aac6629389db17e99894c5bee0da01d4c8065d11d8c6f6e1602f9484290baa70
+        name: build-and-push
+        script: |
+          ENTITLEMENT_VOLUME=""
+
+          if [[ "false" == "true" ]]; then
+            ENTITLEMENT_VOLUME="--volume /tmp/entitlement:/etc/pki/entitlement"
+          fi
+
+          buildah bud --storage-driver=vfs \
+            $ENTITLEMENT_VOLUME --isolation=chroot \
+            --format=docker --tls-verify=true \
+            -f repo/Dockerfile -t us.icr.io/sn-labs-sabyraslan20/tax-calculator:juphc-tc-pipeline-pbqjl repo
+
+          [[ "false" == "true" ]] && echo "Push skipped" && exit 0
+
+          if [[ "true" == "true" ]]; then
+
+            # if config.json exists at workspace root, we use that
+            if test -f "/workspace/dockerconfig/config.json"; then
+              export DOCKER_CONFIG="/workspace/dockerconfig"
+
+            # else we look for .dockerconfigjson at the root
+            elif test -f "/workspace/dockerconfig/.dockerconfigjson"; then
+              cp "/workspace/dockerconfig/.dockerconfigjson" "$HOME/.docker/config.json"
+              export DOCKER_CONFIG="$HOME/.docker"
+
+            # need to error out if neither files are present
+            else
+              echo "neither 'config.json' nor '.dockerconfigjson' found at workspace root"
+              exit 1
+            fi
+          fi
+
+          buildah --storage-driver=vfs push \
+             --tls-verify=true \
+            --digestfile /tmp/image-digest us.icr.io/sn-labs-sabyraslan20/tax-calculator:juphc-tc-pipeline-pbqjl \
+            docker://us.icr.io/sn-labs-sabyraslan20/tax-calculator:juphc-tc-pipeline-pbqjl
+          cat /tmp/image-digest | tee /tekton/results/IMAGE_DIGEST
+          echo -n "us.icr.io/sn-labs-sabyraslan20/tax-calculator:juphc-tc-pipeline-pbqjl" | tee /tekton/results/IMAGE_URL
+        securityContext:
+          capabilities:
+            add:
+            - SETFCAP
+        volumeMounts:
+        - mountPath: /var/lib/containers
+          name: varlibcontainers
+        workingDir: /workspace/source
+      volumes:
+      - emptyDir: {}
+        name: varlibcontainers
+      workspaces:
+      - name: source
+      - description: An optional workspace that allows providing a .docker/config.json
+          file for Buildah to access the container registry. The file should be placed
+          at the root of the Workspace with name config.json or .dockerconfigjson.
+        name: dockerconfig
+        optional: true
+      - description: An optional workspace that allows providing the entitlement keys
+          for Buildah to access subscription. The mounted workspace contains entitlement.pem
+          and entitlement-key.pem.
+        mountPath: /tmp/entitlement
+        name: rhel-entitlement
+        optional: true
+- apiVersion: tekton.dev/v1
+  kind: TaskRun
+  metadata:
+    annotations:
+      chains.tekton.dev/signed: "true"
+      operator.tekton.dev/last-applied-hash: 83bd8739adf2d839813987bedd5c9d8660a483d8b12057a54a4210412503fb94
+      pipeline.tekton.dev/release: b08b965d883495bbc8c943cb49eb97fdea5d5f80
+      tekton.dev/categories: Git
+      tekton.dev/deprecated: "true"
+      tekton.dev/displayName: git clone
+      tekton.dev/pipelines.minVersion: 0.38.0
+      tekton.dev/platforms: linux/amd64,linux/s390x,linux/ppc64le,linux/arm64
+      tekton.dev/tags: git
+    creationTimestamp: "2026-10-19T18:55:21Z"
+    finalizers:
+    - chains.tekton.dev
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: tekton-pipelines
+      app.kubernetes.io/version: "0.9"
+      operator.tekton.dev/operand-name: openshift-pipelines-addons
+      operator.tekton.dev/provider-type: redhat
+      tekton.dev/clusterTask: git-clone
+      tekton.dev/memberOf: tasks
+      tekton.dev/pipeline: juphc-tc-pipeline
+      tekton.dev/pipelineRun: juphc-tc-pipeline-pbqjl
+      tekton.dev/pipelineTask: clone
+    name: juphc-tc-pipeline-pbqjl-clone
+    namespace: sn-labs-sabyraslan20
+    ownerReferences:
+    - apiVersion: tekton.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PipelineRun
+      name: juphc-tc-pipeline-pbqjl
+      uid: 1b290774-b23b-4043-a67a-71e5f7a55621
+    resourceVersion: "3091229502"
+    uid: b17aa464-de7e-4c8e-9a69-a4e955690c88
+  spec:
+    params:
+    - name: url
+      value: https://github.com/asikxz008/juphc-tc_pipeline.git
+    - name: revision
+      value: a47946e966758e84caeb30d80a28d47fbc23e251
+    - name: subdirectory
+      value: repo
+    - name: deleteExisting
+      value: "false"
+    serviceAccountName: pipeline
+    taskRef:
+      kind: ClusterTask
+      name: git-clone
+    timeout: 1h0m0s
+    workspaces:
+    - name: output
+      persistentVolumeClaim:
+        claimName: pvc-9fe007cffe
+  status:
+    completionTime: "2026-10-19T18:55:56Z"
+    conditions:
+    - lastTransitionTime: "2026-10-19T18:55:56Z"
+      message: All Steps have completed executing
+      reason: Succeeded
+      status: "True"
+      type: Succeeded
+    podName: juphc-tc-pipeline-pbqjl-clone-pod
+    results:
+    - name: commit
+      type: string
+      value: a47946e966758e84caeb30d80a28d47fbc23e251
+    - name: committer-date
+      type: string
+      value: "1792436060"
+    - name: url
+      type: string
+      value: https://github.com/asikxz008/juphc-tc_pipeline.git
+    startTime: "2026-10-19T18:55:21Z"
+    steps:
+    - container: step-clone
+      imageID: registry.redhat.io/openshift-pipelines/pipelines-git-init-rhel8@sha256:c5c462f1bc65a8bbdafed5268dc0d434dc1dfd74a1e34bea8110e144dc941af3
+      name: clone
+      terminated:
+        containerID: cri-o://4a9475636fc7a996a71e4c99e673039976d4ef923f0ad7db2967c442cb42605c
+        exitCode: 0
+        finishedAt: "2026-10-19T18:55:55Z"
+        message: '[{"key":"commit","value":"a47946e966758e84caeb30d80a28d47fbc23e251","type":1},{"key":"committer-date","value":"1792436060","type":1},{"key":"url","value":"https://github.com/asikxz008/juphc-tc_pipeline.git","type":1}]'
+        reason: Completed
+        startedAt: "2026-10-19T18:55:46Z"
+      terminationReason: Completed
+    taskSpec:
+      description: |-
+        These Tasks are Git tasks to work with repositories used by other tasks in your Pipeline.
+        The git-clone Task will clone a repo from the provided url into the output Workspace. By default the repo will be cloned into the root of your Workspace. You can clone into a subdirectory by setting this Task's subdirectory param. This Task also supports sparse checkouts. To perform a sparse checkout, pass a list of comma separated directory patterns to this Task's sparseCheckoutDirectories param.
+      params:
+      - description: Repository URL to clone from.
+        name: url
+        type: string
+      - default: ""
+        description: Revision to checkout. (branch, tag, sha, ref, etc...)
+        name: revision
+        type: string
+      - default: ""
+        description: Refspec to fetch before checking out revision.
+        name: refspec
+        type: string
+      - default: "true"
+        description: Initialize and fetch git submodules.
+        name: submodules
+        type: string
+      - default: "1"
+        description: Perform a shallow clone, fetching only the most recent N commits.
+        name: depth
+        type: string
+      - default: "true"
+        description: Set the `http.sslVerify` global git config. Setting this to `false`
+          is not advised unless you are sure that you trust your git remote.
+        name: sslVerify
+        type: string
+      - default: ca-bundle.crt
+        description: file name of mounted crt using ssl-ca-directory workspace. default
+          value is ca-bundle.crt.
+        name: crtFileName
+        type: string
+      - default: ""
+        description: Subdirectory inside the `output` Workspace to clone the repo
+          into.
+        name: subdirectory
+        type: string
+      - default: ""
+        description: Define the directory patterns to match or exclude when performing
+          a sparse checkout.
+        name: sparseCheckoutDirectories
+        type: string
+      - default: "true"
+        description: Clean out the contents of the destination directory if it already
+          exists before cloning.
+        name: deleteExisting
+        type: string
+      - default: ""
+        description: HTTP proxy server for non-SSL requests.
+        name: httpProxy
+        type: string
+      - default: ""
+        description: HTTPS proxy server for SSL requests.
+        name: httpsProxy
+        type: string
+      - default: ""
+        description: Opt out of proxying HTTP/HTTPS requests.
+        name: noProxy
+        type: string
+      - default: "true"
+        description: Log the commands that are executed during `git-clone`'s operation.
+        name: verbose
+        type: string
+      - default: registry.redhat.io/openshift-pipelines/pipelines-git-init-rhel8@sha256:cadf34d59efc025f5a76705c254e7978507e4903fe378166b6b0618a88644f4b
+        description: The image providing the git-init binary that this Task runs.
+        name: gitInitImage
+        type: string
+      - default: /home/git
+        description: |
+          Absolute path to the user's home directory.
+        name: userHome
+        type: string
+      results:
+      - description: The precise commit SHA that was fetched by this Task.
+        name: commit
+        type: string
+      - description: The precise URL that was fetched by this Task.
+        name: url
+        type: string
+      - description: The epoch timestamp of the commit that was fetched by this Task.
+        name: committer-date
+        type: string
+      steps:
+      - computeResources: {}
+        env:
+        - name: HOME
+          value: /home/git
+        - name: PARAM_URL
+          value: https://github.com/asikxz008/juphc-tc_pipeline.git
+        - name: PARAM_REVISION
+          value: a47946e966758e84caeb30d80a28d47fbc23e251
+        - name: PARAM_REFSPEC
+        - name: PARAM_SUBMODULES
+          value: "true"
+        - name: PARAM_DEPTH
+          value: "1"
+        - name: PARAM_SSL_VERIFY
+          value: "true"
+        - name: PARAM_CRT_FILENAME
+          value: ca-bundle.crt
+        - name: PARAM_SUBDIRECTORY
+          value: repo
+        - name: PARAM_DELETE_EXISTING
+          value: "false"
+        - name: PARAM_HTTP_PROXY
+        - name: PARAM_HTTPS_PROXY
+        - name: PARAM_NO_PROXY
+        - name: PARAM_VERBOSE
+          value: "true"
+        - name: PARAM_SPARSE_CHECKOUT_DIRECTORIES
+        - name: PARAM_USER_HOME
+          value: /home/git
+        - name: WORKSPACE_OUTPUT_PATH
+          value: /workspace/output
+        - name: WORKSPACE_SSH_DIRECTORY_BOUND
+          value: "false"
+        - name: WORKSPACE_SSH_DIRECTORY_PATH
+        - name: WORKSPACE_BASIC_AUTH_DIRECTORY_BOUND
+          value: "false"
+        - name: WORKSPACE_BASIC_AUTH_DIRECTORY_PATH
+        - name: WORKSPACE_SSL_CA_DIRECTORY_BOUND
+          value: "false"
+        - name: WORKSPACE_SSL_CA_DIRECTORY_PATH
+        image: registry.redhat.io/openshift-pipelines/pipelines-git-init-rhel8@sha256:cadf34d59efc025f5a76705c254e7978507e4903fe378166b6b0618a88644f4b
+        name: clone
+        script: |
+          #!/usr/bin/env sh
+          set -eu
+
+          if [ "${PARAM_VERBOSE}" = "true" ] ; then
+            set -x
+          fi
+
+          if [ "${WORKSPACE_BASIC_AUTH_DIRECTORY_BOUND}" = "true" ] ; then
+            cp "${WORKSPACE_BASIC_AUTH_DIRECTORY_PATH}/.git-credentials" "${PARAM_USER_HOME}/.git-credentials"
+            cp "${WORKSPACE_BASIC_AUTH_DIRECTORY_PATH}/.gitconfig" "${PARAM_USER_HOME}/.gitconfig"
+            chmod 400 "${PARAM_USER_HOME}/.git-credentials"
+            chmod 400 "${PARAM_USER_HOME}/.gitconfig"
+          fi
+
+          if [ "${WORKSPACE_SSH_DIRECTORY_BOUND}" = "true" ] ; then
+            cp -R "${WORKSPACE_SSH_DIRECTORY_PATH}" "${PARAM_USER_HOME}"/.ssh
+            chmod 700 "${PARAM_USER_HOME}"/.ssh
+            chmod -R 400 "${PARAM_USER_HOME}"/.ssh/*
+          fi
+
+          if [ "${WORKSPACE_SSL_CA_DIRECTORY_BOUND}" = "true" ] ; then
+             export GIT_SSL_CAPATH="${WORKSPACE_SSL_CA_DIRECTORY_PATH}"
+             if [ "${PARAM_CRT_FILENAME}" != "" ] ; then
+                export GIT_SSL_CAINFO="${WORKSPACE_SSL_CA_DIRECTORY_PATH}/${PARAM_CRT_FILENAME}"
+             fi
+          fi
+          CHECKOUT_DIR="${WORKSPACE_OUTPUT_PATH}/${PARAM_SUBDIRECTORY}"
+
+          cleandir() {
+            # Delete any existing contents of the repo directory if it exists.
+            #
+            # We don't just "rm -rf ${CHECKOUT_DIR}" because ${CHECKOUT_DIR} might be "/"
+            # or the root of a mounted volume.
+            if [ -d "${CHECKOUT_DIR}" ] ; then
+              # Delete non-hidden files and directories
+              rm -rf "${CHECKOUT_DIR:?}"/*
+              # Delete files and directories starting with . but excluding ..
+              rm -rf "${CHECKOUT_DIR}"/.[!.]*
+              # Delete files and directories starting with .. plus any other character
+              rm -rf "${CHECKOUT_DIR}"/..?*
+            fi
+          }
+
+          if [ "${PARAM_DELETE_EXISTING}" = "true" ] ; then
+            cleandir || true
+          fi
+
+          test -z "${PARAM_HTTP_PROXY}" || export HTTP_PROXY="${PARAM_HTTP_PROXY}"
+          test -z "${PARAM_HTTPS_PROXY}" || export HTTPS_PROXY="${PARAM_HTTPS_PROXY}"
+          test -z "${PARAM_NO_PROXY}" || export NO_PROXY="${PARAM_NO_PROXY}"
+
+          git config --global --add safe.directory "${WORKSPACE_OUTPUT_PATH}"
+          /ko-app/git-init \
+            -url="${PARAM_URL}" \
+            -revision="${PARAM_REVISION}" \
+            -refspec="${PARAM_REFSPEC}" \
+            -path="${CHECKOUT_DIR}" \
+            -sslVerify="${PARAM_SSL_VERIFY}" \
+            -submodules="${PARAM_SUBMODULES}" \
+            -depth="${PARAM_DEPTH}" \
+            -sparseCheckoutDirectories="${PARAM_SPARSE_CHECKOUT_DIRECTORIES}"
+          cd "${CHECKOUT_DIR}"
+          RESULT_SHA="$(git rev-parse HEAD)"
+          EXIT_CODE="$?"
+          if [ "${EXIT_CODE}" != 0 ] ; then
+            exit "${EXIT_CODE}"
+          fi
+          RESULT_COMMITTER_DATE="$(git log -1 --pretty=%ct)"
+          printf "%s" "${RESULT_COMMITTER_DATE}" > "/tekton/results/committer-date"
+          printf "%s" "${RESULT_SHA}" > "/tekton/results/commit"
+          printf "%s" "${PARAM_URL}" > "/tekton/results/url"
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 65532
+      workspaces:
+      - description: The git repo will be cloned onto the volume backing this Workspace.
+        name: output
+      - description: |
+          A .ssh directory with private key, known_hosts, config, etc. Copied to
+          the user's home before git commands are executed. Used to authenticate
+          with the git remote when performing the clone. Binding a Secret to this
+          Workspace is strongly recommended over other volume types.
+        name: ssh-directory
+        optional: true
+      - description: |
+          A Workspace containing a .gitconfig and .git-credentials file. These
+          will be copied to the user's home before any git commands are run. Any
+          other files in this Workspace are ignored. It is strongly recommended
+          to use ssh-directory over basic-auth whenever possible and to bind a
+          Secret to this Workspace over other volume types.
+        name: basic-auth
+        optional: true
+      - description: |
+          A workspace containing CA certificates, this will be used by Git to
+          verify the peer with when fetching or pushing over HTTPS.
+        name: ssl-ca-directory
+        optional: true
+- apiVersion: tekton.dev/v1
+  kind: TaskRun
+  metadata:
+    annotations:
+      chains.tekton.dev/signed: "true"
+      pipeline.tekton.dev/release: b08b965d883495bbc8c943cb49eb97fdea5d5f80
+    creationTimestamp: "2026-10-19T18:55:56Z"
+    finalizers:
+    - chains.tekton.dev
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: tekton-pipelines
+      tekton.dev/memberOf: tasks
+      tekton.dev/pipeline: juphc-tc-pipeline
+      tekton.dev/pipelineRun: juphc-tc-pipeline-pbqjl
+      tekton.dev/pipelineTask: npminstall
+      tekton.dev/task: npm
+    name: juphc-tc-pipeline-pbqjl-npminstall
+    namespace: sn-labs-sabyraslan20
+    ownerReferences:
+    - apiVersion: tekton.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PipelineRun
+      name: juphc-tc-pipeline-pbqjl
+      uid: 1b290774-b23b-4043-a67a-71e5f7a55621
+    resourceVersion: "3091230637"
+    uid: 9f88c6cb-9db4-4db0-af2a-bb8a3672489c
+  spec:
+    serviceAccountName: pipeline
+    taskRef:
+      kind: Task
+      name: npm
+    timeout: 1h0m0s
+    workspaces:
+    - name: source
+      persistentVolumeClaim:
+        claimName: pvc-9fe007cffe
+  status:
+    completionTime: "2026-10-19T18:56:51Z"
+    conditions:
+    - lastTransitionTime: "2026-10-19T18:56:51Z"
+      message: All Steps have completed executing
+      reason: Succeeded
+      status: "True"
+      type: Succeeded
+    podName: juphc-tc-pipeline-pbqjl-npminstall-pod
+    startTime: "2026-10-19T18:55:56Z"
+    steps:
+    - container: step-install
+      imageID: us.icr.io/docker-io/library/node@sha256:d932545dbe5f4ebee80c8027d5e09037c57582e5d1ea6726def3a54b7565cf8e
+      name: install
+      terminated:
+        containerID: cri-o://6d82e3b3b1d026be54a031f7e18c45c2996d7de73c457aca6f494bcd330444ee
+        exitCode: 0
+        finishedAt: "2026-10-19T18:56:36Z"
+        reason: Completed
+        startedAt: "2026-10-19T18:56:04Z"
+      terminationReason: Completed
+    taskSpec:
+      steps:
+      - computeResources: {}
+        env:
+        - name: HOME
+          value: /tmp
+        image: node:22-bookworm-slim
+        name: install
+        script: |
+          #!/bin/sh
+          set -eu
+          npm ci --ignore-scripts --no-audit --no-fund
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 65532
+        workingDir: /workspace/source/repo
+      workspaces:
+      - name: source
+- apiVersion: tekton.dev/v1
+  kind: TaskRun
+  metadata:
+    annotations:
+      chains.tekton.dev/signed: "true"
+      pipeline.tekton.dev/release: b08b965d883495bbc8c943cb49eb97fdea5d5f80
+    creationTimestamp: "2026-10-19T18:56:51Z"
+    finalizers:
+    - chains.tekton.dev
+    generation: 1
+    labels:
+      app.kubernetes.io/managed-by: tekton-pipelines
+      tekton.dev/memberOf: tasks
+      tekton.dev/pipeline: juphc-tc-pipeline
+      tekton.dev/pipelineRun: juphc-tc-pipeline-pbqjl
+      tekton.dev/pipelineTask: tests
+      tekton.dev/task: jasmine
+    name: juphc-tc-pipeline-pbqjl-tests
+    namespace: sn-labs-sabyraslan20
+    ownerReferences:
+    - apiVersion: tekton.dev/v1
+      blockOwnerDeletion: true
+      controller: true
+      kind: PipelineRun
+      name: juphc-tc-pipeline-pbqjl
+      uid: 1b290774-b23b-4043-a67a-71e5f7a55621
+    resourceVersion: "3091230903"
+    uid: c39e1c51-792b-4eb2-b3d9-7fe11eabccfc
+  spec:
+    serviceAccountName: pipeline
+    taskRef:
+      kind: Task
+      name: jasmine
+    timeout: 1h0m0s
+    workspaces:
+    - name: source
+      persistentVolumeClaim:
+        claimName: pvc-9fe007cffe
+  status:
+    completionTime: "2026-10-19T18:57:03Z"
+    conditions:
+    - lastTransitionTime: "2026-10-19T18:57:03Z"
+      message: All Steps have completed executing
+      reason: Succeeded
+      status: "True"
+      type: Succeeded
+    podName: juphc-tc-pipeline-pbqjl-tests-pod
+    startTime: "2026-10-19T18:56:51Z"
+    steps:
+    - container: step-test
+      imageID: us.icr.io/docker-io/library/node@sha256:d932545dbe5f4ebee80c8027d5e09037c57582e5d1ea6726def3a54b7565cf8e
+      name: test
+      terminated:
+        containerID: cri-o://8cff75c267a0a21881649bc897b760a3414535d42c5c53260914475a79c39ada
+        exitCode: 0
+        finishedAt: "2026-10-19T18:57:03Z"
+        reason: Completed
+        startedAt: "2026-10-19T18:56:59Z"
+      terminationReason: Completed
+    taskSpec:
+      steps:
+      - computeResources: {}
+        env:
+        - name: HOME
+          value: /tmp
+        image: node:22-bookworm-slim
+        name: test
+        script: |
+          #!/bin/sh
+          set -eu
+          npx jasmine
+        securityContext:
+          runAsNonRoot: true
+          runAsUser: 65532
+        workingDir: /workspace/source/repo
+      workspaces:
+      - name: source
+kind: List
+metadata:
+  resourceVersion: ""

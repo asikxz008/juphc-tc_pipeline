@@ -1,0 +1,24 @@
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/prepare] 2026/10/19 18:55:28 Entrypoint initialization
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/place-scripts] 2026/10/19 18:55:29 Decoded script /tekton/scripts/script-0-fwrpp
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + '[' false = true ']'
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + '[' false = true ']'
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + '[' false = true ']'
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + CHECKOUT_DIR=/workspace/output/repo
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + '[' false = true ']'
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + test -z ''
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + test -z ''
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + test -z ''
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + git config --global --add safe.directory /workspace/output
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + /ko-app/git-init -url=https://github.com/asikxz008/juphc-tc_pipeline.git -revision=a47946e966758e84caeb30d80a28d47fbc23e251 -refspec= -path=/workspace/output/repo -sslVerify=true -submodules=true -depth=1 -sparseCheckoutDirectories=
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] {"level":"info","ts":1792436154.7825587,"caller":"git/git.go:200","msg":"Successfully cloned https://github.com/asikxz008/juphc-tc_pipeline.git @ a47946e966758e84caeb30d80a28d47fbc23e251 (grafted, HEAD) in path /workspace/output/repo"}
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] {"level":"info","ts":1792436155.4473255,"caller":"git/git.go:239","msg":"Successfully initialized and updated submodules in path /workspace/output/repo"}
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + cd /workspace/output/repo
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] ++ git rev-parse HEAD
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + RESULT_SHA=a47946e966758e84caeb30d80a28d47fbc23e251
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + EXIT_CODE=0
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + '[' 0 '!=' 0 ']'
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] ++ git log -1 --pretty=%ct
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + RESULT_COMMITTER_DATE=1792436060
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + printf %s 1792436060
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + printf %s a47946e966758e84caeb30d80a28d47fbc23e251
+[pod/juphc-tc-pipeline-pbqjl-clone-pod/step-clone] + printf %s https://github.com/asikxz008/juphc-tc_pipeline.git

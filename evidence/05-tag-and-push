@@ -1,0 +1,40 @@
++ ibmcloud cr login
+Logging 'docker' in to 'us.icr.io'...
+Logged in to 'us.icr.io'.
+
+OK
++ docker tag tax-calculator:latest us.icr.io/sn-labs-sabyraslan20/tax-calculator:course-a47946e
++ docker push us.icr.io/sn-labs-sabyraslan20/tax-calculator:course-a47946e
+The push refers to repository [us.icr.io/sn-labs-sabyraslan20/tax-calculator]
+74eb2abd73a8: Preparing
+511345b936d1: Preparing
+fd248ad524bb: Preparing
+34f95d56965b: Preparing
+ef3059b69533: Preparing
+1f6769d33b2c: Preparing
+268dcb7d3ded: Preparing
+3ed70aff1d48: Preparing
+b4ae38225777: Preparing
+dd5ee23ab910: Preparing
+1f5a1d1be68f: Preparing
+15f1c8eb1ab1: Preparing
+1f6769d33b2c: Waiting
+268dcb7d3ded: Waiting
+3ed70aff1d48: Waiting
+b4ae38225777: Waiting
+dd5ee23ab910: Waiting
+1f5a1d1be68f: Waiting
+15f1c8eb1ab1: Waiting
+34f95d56965b: Pushed
+74eb2abd73a8: Pushed
+511345b936d1: Pushed
+fd248ad524bb: Pushed
+ef3059b69533: Pushed
+268dcb7d3ded: Pushed
+1f6769d33b2c: Pushed
+3ed70aff1d48: Pushed
+b4ae38225777: Pushed
+dd5ee23ab910: Pushed
+15f1c8eb1ab1: Pushed
+1f5a1d1be68f: Pushed
+course-a47946e: digest: sha256:0323c9679f6425632d19bb7d89cbd8fc5acf472c27823ba41caa2d5c82fc002f size: 2816
